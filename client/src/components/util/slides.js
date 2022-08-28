@@ -38,34 +38,6 @@ const slides = [{
         link: "http://www.figma.com",
         icon: <SiFigma />
       }
-    ]}, {
-
-    id: 2,
-    project: "Portfolio v2",
-    image: portfolio,
-    desc: "yo",
-    difficulty: 3,
-    tags: [{
-        name: "React.js",
-        color: "#5ED3F3"
-    }, {
-        name: "Tailwind CSS",
-        color: "#38BDF8"
-    }],
-
-    links: [{
-        name: "Github",
-        link: "http://www.github.com",
-        icon: <AiOutlineGithub />
-      },{
-        name: "Demo",
-        link: "",
-        icon: <AiOutlineLaptop />
-      },{
-        name: "Figma",
-        link: "http://www.figma.com",
-        icon: <SiFigma />
-      }
     ]}]
 
 export default slides
