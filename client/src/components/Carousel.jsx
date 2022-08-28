@@ -35,8 +35,10 @@ const Carousel = ({slides}) => {
             >
 
                     <motion.div className="flex w-full items-center">
-
-                        <GoChevronLeft className="text-3xl mr-6 opacity-50 hover:opacity-100 transition-all cursor-pointer" onClick={goToPrev} />
+                        
+                        {slides[slideIndex - 1] && (
+                            <GoChevronLeft className="text-3xl mr-6 opacity-50 hover:opacity-100 transition-all cursor-pointer" onClick={goToPrev} />
+                        )}
 
                         <motion.div 
                             className="relative bg-alt bg-opacity-50 hover:bg-opacity-100 transition-all rounded-md w-full h-48 lg:h-72 transition-all flex items-center justify-center overflow-hidden"
@@ -57,7 +59,11 @@ const Carousel = ({slides}) => {
 
                         </motion.div>
 
-                        <GoChevronRight className="text-3xl ml-6 opacity-50 hover:opacity-100 transition-all cursor-pointer" onClick={goToNext}/>
+                        {slides[slideIndex + 1] && (
+
+                            <GoChevronRight className="text-3xl ml-6 opacity-50 hover:opacity-100 transition-all cursor-pointer" onClick={goToNext}/>
+
+                        )}
 
                     </motion.div>
                     
