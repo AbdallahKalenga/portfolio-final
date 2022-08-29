@@ -31,7 +31,7 @@ const Works = () => {
                 whileInView={{x: 0, opacity: 1}} 
                 transition={{duration: 1}} 
             >
-                <motion.div whileHover={{scale: 1.1}} className="lg:ml-12 mt-12 flex flex-col w-full lg:flex-row font-[Outfit] items-center shadow-lg">
+                <motion.div whileHover={{scale: 1.1}} className="mt-12 flex flex-col w-full lg:flex-row font-[Outfit] items-center shadow-lg">
 
                     <div className="bg-secondary px-8 py-[0.57rem] flex justify-center rounded-tl-md rounded-tr-md lg:rounded-tr-none lg:rounded-bl-md w-full">
                         Any way I can improve? 
