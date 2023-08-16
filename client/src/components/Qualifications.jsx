@@ -1,173 +1,94 @@
-import { motion, useAnimation } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { useEffect } from "react"
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
 
-import { GiGraduateCap } from "react-icons/gi"
-import { AiFillCalendar } from "react-icons/ai"
-import { BsFillBriefcaseFill } from "react-icons/bs"
-import { education, experience } from "./util"
-
+import { GiGraduateCap } from 'react-icons/gi'
+import { AiFillCalendar } from 'react-icons/ai'
+import { BsFillBriefcaseFill } from 'react-icons/bs'
+import { education, experience } from './util'
 
 const Qualifications = () => {
+  return (
+    <div>
+      <motion.h1
+        className="text-2xl"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        So... <span className="text-alt"> What are my qualifications?</span>
+      </motion.h1>
 
-    const titleControl = useAnimation()
-    const educationControl = useAnimation()
-    const experienceControl = useAnimation()
-    
-    const {ref, inView} = useInView()
+      <div className="flex flex-col items-start lg:flex-row mt-16 gap-12 ">
+        <motion.div
+          className="flex flex-col gap-8 justify-center lg:w-1/2"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <motion.div className="flex items-center gap-6">
+            <GiGraduateCap className="text-2xl" />
 
-    useEffect(() => {
-        if (inView) {
-            titleControl.start('visibleTitle')
-        } 
-        
-        if (inView) {
-            educationControl.start('visibleEducation')
-        } 
-        
-        if (inView) {
-            experienceControl.start('visibleExperience')
-        }
+            <p className="font-['Outfit'] text-lg">Timeline of my education</p>
+          </motion.div>
 
-    }, [titleControl, educationControl, experienceControl, inView])
+          <motion.div className="space-y-8">
+            {education.map((edu, index) => (
+              <motion.div
+                className="flex items-center gap-6 font-['Outfit']"
+                key={index}
+              >
+                <AiFillCalendar className="text-2xl" />
 
+                <div>
+                  <p> {edu?.name} </p>
 
-    const qVariants = {
-        hiddenTitle: {
-            scale: 0
-        }, 
-        visibleTitle: {
-            scale: 1,
-            transition: {
-                duration: 1
-            }
-        },
+                  <p className="text-sm text-alt"> {edu?.date} </p>
 
-        hiddenEducation: {
-            x: -1000
-        },
-        visibleEducation: {
-            x: 0,
-            transition: {
-                duration: 1
-            }
-        },
+                  <p className="mt-2 w-full"> {edu?.desc} </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
 
-        hiddenExperience: {
-            x: 1000
-        },
-        visibleExperience: {
-            x: 0,
-            transition: {
-                duration: 1
-            }
-        }
-    }
+        <motion.div
+          className="flex flex-col gap-12 justify-center lg:w-1/2"
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <motion.div className="flex items-center gap-6">
+            <BsFillBriefcaseFill className="text-lg" />
 
-    return (
+            <p className="font-['Outfit'] text-lg">Timeline of my experience</p>
+          </motion.div>
 
-        <div>
-            
-            <motion.h1 
-                className="text-2xl"
-                initial={{x: -100, opacity: 0}}
-                whileInView={{x: 0, opacity: 1}}
-                transition={{duration: 1}}
-            > 
-            
-                So... <span className="text-alt"> What are my qualifications?</span> 
-            
-            </motion.h1>
+          <motion.div className="space-y-8">
+            {experience.map((exp, index) => (
+              <motion.div
+                className="flex items-center gap-6 font-['Outfit']"
+                key={index}
+              >
+                <AiFillCalendar className="text-2xl" />
 
-            <div className="flex flex-col lg:flex-row mt-16 gap-20">
+                <div>
+                  <p> {exp.name} </p>
 
-                <motion.div 
-                    className="flex flex-col gap-12 justify-center"
-                    initial={{x: -100, opacity: 0}}
-                    whileInView={{x: 0, opacity: 1}}
-                    transition={{duration: 1}}
-                >
+                  <p className="text-sm text-alt"> {exp.date} </p>
 
-                    <motion.div className="flex items-center gap-6">
-
-                        <GiGraduateCap className="text-2xl" />
-
-                        <p className="font-['Outfit'] text-lg"> Timeline of my education </p>
-
-                    </motion.div>
-
-                    <motion.div>
-                        {education.map((edu, index) => (
-
-                            <motion.div className="flex items-center gap-6 font-['Outfit']" key={index}>
-
-                                <AiFillCalendar className="text-2xl" />
-
-                                <div>
-
-                                    <p> {edu?.name} </p>
-
-                                    <p className="text-sm text-alt"> {edu?.date} </p>
-
-                                    <p className="mt-2 w-full"> {edu?.desc} </p> 
-
-
-                                </div>
-
-
-                            </motion.div>
-
-                        ))}
-                    </motion.div>
-
-                </motion.div>
-
-                <motion.div 
-                    className="flex flex-col gap-12 justify-center"
-                    initial={{x: 100, opacity: 0}}
-                    whileInView={{x: 0, opacity: 1}}
-                    transition={{duration: 1}}
-                >
-
-                    <motion.div className="flex items-center gap-6">
-
-                        <BsFillBriefcaseFill className="text-lg" />
-
-                        <p className="font-['Outfit'] text-lg"> Timeline of my experience </p>
-
-                    </motion.div>
-
-                    <motion.div>
-                        {experience.map((exp, index) => (
-
-                            <motion.div className="flex items-center gap-6 font-['Outfit']" key={index}>
-
-                                <AiFillCalendar className="text-2xl" />
-
-                                <div>
-
-                                    <p> {exp.name} </p>
-
-                                    <p className="text-sm text-alt"> {exp.date} </p>
-
-                                    <p className="mt-2"> {exp.desc} </p> 
-
-
-                                </div>
-
-
-                            </motion.div>
-
-                        ))}
-                    </motion.div>
-
-                </motion.div>
-
-            </div>
-
-        </div>
-    )
-
+                  <p className="mt-2"> {exp.desc} </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  )
 }
 
 export default Qualifications
